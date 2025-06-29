@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Netflix-style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e50914;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f51a25;
+}
+
+/* Netflix-style focus states */
+*:focus {
+  outline: 2px solid #e50914;
+  outline-offset: 2px;
+}
+
+/* Netflix-style button animations */
+.btn-netflix {
+  background: linear-gradient(135deg, #e50914 0%, #f51a25 100%);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-netflix:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
+}
+
+.btn-netflix:active {
+  transform: translateY(0);
+}
+
+/* Netflix-style card hover effects */
+.netflix-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.netflix-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Netflix-style text gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #e50914 0%, #f51a25 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Netflix-style loading animation */
+.netflix-loading {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #333;
+  border-top: 3px solid #e50914;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Netflix-style backdrop blur */
+.netflix-backdrop {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Netflix-style grid layout */
+.netflix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Netflix-style responsive design */
+@media (max-width: 768px) {
+  .netflix-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+/* Netflix-style typography */
+.netflix-title {
+  font-family: "Netflix Sans", "Inter", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.netflix-subtitle {
+  font-family: "Netflix Sans", "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Netflix-style shadows */
+.netflix-shadow {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.netflix-shadow-lg {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+/* Netflix-style borders */
+.netflix-border {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Netflix-style gradients */
+.netflix-gradient {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+}
+
+.netflix-gradient-red {
+  background: linear-gradient(135deg, #e50914 0%, #f51a25 100%);
+}
+
+/* Netflix-style animations */
+@keyframes netflix-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.netflix-fade-in {
+  animation: netflix-fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Netflix-style input styling */
+.netflix-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.netflix-input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #e50914;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1);
+}
+
+.netflix-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Netflix-style modal backdrop */
+.netflix-modal-backdrop {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Netflix-style rating stars */
+.netflix-stars {
+  color: #e50914;
+}
+
+.netflix-stars .star {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.netflix-stars .star:hover {
+  transform: scale(1.2);
+  color: #f51a25;
+}
+
+/* Cinematic Grain Effect */
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  animation: grain 8s steps(10) infinite;
+  pointer-events: none;
+}

@@ -1,0 +1,637 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+/* 
+  NOTE: Replace 'Anton' with 'Druk' and update the src url 
+  once you have the 'Druk-Bold.ttf' font file.
+*/
+@font-face {
+  font-family: "Druk";
+  src: local("Anton"),
+    url("https://fonts.gstatic.com/s/anton/v23/1Ptgg87LROyAm3Kz-C8.woff2")
+      format("woff2");
+  font-weight: bold;
+  font-display: swap;
+}
+
+body,
+html {
+  min-height: 100%;
+  height: auto;
+  margin: 0;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+.landing-container {
+  height: 100vh;
+  min-height: unset;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+.landing-content > .row {
+  height: 100%;
+}
+
+.hero-text {
+  font-family: "Druk", "Anton", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+.small-caps {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.social-icons a {
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.social-icons a:hover {
+  opacity: 0.7;
+}
+
+/* Slide-in Animations */
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-top {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-bottom {
+  animation: slide-in-from-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.animate-slide-in-top {
+  animation: slide-in-from-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Underline Hover Effect */
+.hover-underline {
+  position: relative;
+  text-decoration: none;
+  color: white;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: white;
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hero-underline {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  padding: 0 0.25em;
+  transition: color 0.3s;
+}
+
+.hero-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.hero-underline:hover::after {
+  transform: scaleX(1);
+}
+
+.hero-button {
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}
+
+.hero-underline-group {
+  display: inline-block;
+}
+
+.hero-button .hero-underline {
+  font-size: 5rem;
+  font-family: "Druk", "Anton", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+  padding: 0 0.25em;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.hero-button .hero-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.hero-button:hover .hero-underline::after,
+.hero-button:focus .hero-underline::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .hero-button .hero-underline {
+    font-size: 2.5rem;
+  }
+}
+
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Scrollable content area */
+.movie-card .position-relative {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.movie-card .position-relative::-webkit-scrollbar {
+  width: 6px;
+}
+
+.movie-card .position-relative::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.movie-card .position-relative::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.movie-card .position-relative::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.movie-card-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 3;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.movie-card-btn:hover,
+.movie-card-btn:focus {
+  background: #e50914;
+  color: #fff;
+  outline: none;
+}
+
+.movie-card .badge {
+  padding: 0.3em 0.9em;
+  font-family: "Druk", "Anton", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  border-radius: 1.5em;
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.25) !important;
+  color: #fff !important;
+  text-transform: none;
+  opacity: 0;
+  animation: card-fade-in 0.7s 0.1s both;
+}
+
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Review Modal Styles */
+.review-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1050;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.review-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000000;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  padding: 2.5rem 2rem 2rem 2rem;
+  z-index: 1100;
+  min-width: 340px;
+  max-width: 95vw;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  animation: card-fade-in 0.5s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.review-modal h3 {
+  font-family: "Druk", "Anton", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
+}
+.review-modal label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.review-modal input,
+.review-modal textarea,
+.review-modal select {
+  width: 100%;
+  border-radius: 0.7em;
+  border: none;
+  padding: 0.7em 1em;
+  margin-bottom: 1.2em;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.1em;
+}
+.review-modal input:focus,
+.review-modal textarea:focus,
+.review-modal select:focus {
+  outline: 2px solid #e50914;
+  background: rgba(255, 255, 255, 0.15);
+}
+.review-modal .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+.review-modal .btn {
+  border-radius: 2em;
+  font-family: "Druk", "Anton", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  padding: 0.7em 2em;
+  font-size: 1.1em;
+  border: none;
+  background: #e50914;
+  color: #fff;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.review-modal .btn:hover,
+.review-modal .btn:focus {
+  background: #b0060f;
+  color: #fff;
+}
+
+/* Fixed Recommendation Buttons */
+.review-recommend-group {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 2.5em !important;
+  margin: 1.5em 0 !important;
+  padding: 0.5em 0 !important;
+}
+.recommend-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  padding: 1em 2em;
+  border-radius: 3em;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  margin-bottom: 0;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+.recommend-label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+.recommend-label:hover::before {
+  left: 100%;
+}
+.recommend-label:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.recommend-label input[type="radio"] {
+  accent-color: #e50914;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0;
+  cursor: pointer;
+}
+.recommend-label input[type="radio"]:focus + .recommend-text {
+  outline: 2px solid #e50914;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.recommend-label .recommend-text {
+  color: #fff;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.recommend-label input[type="radio"]:checked + .recommend-text {
+  color: #e50914;
+  font-weight: 600;
+}
+.recommend-label input[type="radio"]:checked {
+  background: #e50914;
+}
+.recommend-label input[type="radio"]:checked ~ .recommend-text {
+  color: #e50914;
+  font-weight: 600;
+}
+
+/* Gold Star Ratings */
+.review-modal select option {
+  background: #000;
+  color: #fff;
+}
+.review-modal select option[value="5"] {
+  color: #ffd700;
+}
+.review-modal select option[value="4"] {
+  color: #ffd700;
+}
+.review-modal select option[value="3"] {
+  color: #ffd700;
+}
+.review-modal select option[value="2"] {
+  color: #ffd700;
+}
+.review-modal select option[value="1"] {
+  color: #ffd700;
+}
+
+/* Gold stars in reviewed movies section */
+.badge.bg-primary {
+  background-color: #ffd700 !important;
+  color: #000 !important;
+  font-weight: 600;
+}
+
+.review-modal textarea {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1em;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  border-radius: 0.7em;
+  padding: 0.7em 1em;
+  margin-bottom: 1.2em;
+  transition: background 0.2s;
+}
+.review-modal textarea:focus {
+  outline: 2px solid #e50914;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Hero Section Responsive Background */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: url("../assets/images/the-bear-hero.jpg") center center/cover
+    no-repeat;
+  transition: background-image 0.3s;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    background: url("../assets/images/the-bear-hero-web.jpg") center
+      center/cover no-repeat;
+  }
+}
+
+/* Ensure hero text is readable on all backgrounds */
+.hero-title,
+.hero-subtitle {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+#next-section {
+  background: #181818;
+  color: #fff;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  position: relative;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-fade-in {
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) both;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.review-section-title {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Fade-out animation for scroll out */
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+.review-fade-out {
+  animation: fadeOutDown 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.hero-title {
+  font-family: "Druk", "Anton", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  font-size: 1.3rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
