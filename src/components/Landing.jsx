@@ -13,6 +13,7 @@ import {
   Container,
 } from "react-bootstrap";
 import toast from "react-hot-toast";
+import LoadingScreen from "./LoadingScreen";
 
 // --- INSTRUCTIONS FOR LOCAL ASSETS ---
 // 1. Place your 'hero.jpg' in 'src/assets/images/'.
@@ -33,6 +34,7 @@ const Landing = () => {
     review: "",
   });
   const [reviewedMovies, setReviewedMovies] = useState([]);
+  const [showLoading, setShowLoading] = useState(true);
   const modalRef = useRef();
 
   // Load reviewedMovies from localStorage on mount
@@ -47,6 +49,12 @@ const Landing = () => {
   useEffect(() => {
     localStorage.setItem("reviewedMovies", JSON.stringify(reviewedMovies));
   }, [reviewedMovies]);
+
+  useEffect(() => {
+    // Show loading animation for 1.5 seconds
+    const timer = setTimeout(() => setShowLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -141,6 +149,8 @@ const Landing = () => {
     }
   };
 
+  if (showLoading) return <LoadingScreen />;
+
   return (
     <>
       {/* HERO SECTION WITH RESPONSIVE BACKGROUND */}
@@ -154,6 +164,31 @@ const Landing = () => {
                 style={{ animationDelay: "0.2s" }}
               >
                 MOVIE REVIEW
+              </div>
+              {/* Show hero-button on all screens, but style differently for mobile */}
+              <div className="text-center d-block d-md-none w-100 mt-2">
+                <span className="hero-underline-group">
+                  <span
+                    className="hero-underline"
+                    style={{ fontSize: "2.5rem" }}
+                  >
+                    Movie
+                  </span>
+                  <br />
+                  <span
+                    className="hero-underline"
+                    style={{ fontSize: "2.5rem" }}
+                  >
+                    Review
+                  </span>
+                  <br />
+                  <span
+                    className="hero-underline"
+                    style={{ fontSize: "2.5rem" }}
+                  >
+                    App
+                  </span>
+                </span>
               </div>
               <div className="text-center d-none d-md-block">
                 <a href="#next-section" className="hero-button" tabIndex={0}>
@@ -424,14 +459,6 @@ const Landing = () => {
           <Container>
             <div className="d-flex justify-content-between align-items-center mb-4">
               <h2 className="display-6 fw-bold mb-0">Reviewed Movies</h2>
-              <Button
-                variant="outline-danger"
-                size="sm"
-                onClick={clearAllReviews}
-                aria-label="Clear all reviews"
-              >
-                Clear All
-              </Button>
             </div>
             <Row className="g-4 justify-content-center">
               {reviewedMovies.map((movie, idx) => (
